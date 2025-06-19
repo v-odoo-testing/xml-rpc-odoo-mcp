@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2025-06-19
+
+### Added
+- **Node.js/TypeScript implementation** - Complete rewrite using Node.js and TypeScript for easier installation
+- **npm package distribution** - No more Python virtual environment issues
+- **TypeScript support** - Better type safety and development experience
+- **tsx development mode** - Direct TypeScript execution for development
+
+### Changed
+- **Installation method** - Now uses `npm install -g .` instead of pip
+- **Command structure** - Uses `odoo-xmlrpc-mcp-server` command
+- **Build process** - TypeScript compilation to JavaScript
+
+### Technical
+- Migrated from Python to Node.js/TypeScript
+- Uses `@modelcontextprotocol/sdk` for MCP integration
+- Uses `xmlrpc` package for XML-RPC communication
+- Uses `yargs` for command-line argument parsing
+
 ## [1.0.0] - 2025-06-19
 
 ### Added

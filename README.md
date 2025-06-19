@@ -14,9 +14,9 @@ A Model Context Protocol (MCP) server that provides tools for interacting with O
 
 ### Global Installation (Desktop MCP Server)
 
-1. Install globally using pip:
+1. Install globally using npm:
 ```bash
-pip install -e .
+npm install -g .
 ```
 
 2. Add to your Claude Desktop configuration (`~/Library/Application Support/Claude/claude_desktop_config.json`):
@@ -24,8 +24,8 @@ pip install -e .
 {
   "mcpServers": {
     "odoo-xmlrpc": {
-      "command": "python",
-      "args": ["/path/to/server.py", "--project", "your_project", "--environment", "your_env"],
+      "command": "odoo-xmlrpc-mcp-server",
+      "args": ["--project", "your_project", "--environment", "your_env"],
       "env": {
         "ODOO_URL": "https://your-odoo.domain.com",
         "ODOO_DATABASE": "your_database",
@@ -41,14 +41,24 @@ pip install -e .
 
 1. Clone or copy this repository to your project directory
 
-2. Create `.claude.json` in your project root:
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Build the project:
+```bash
+npm run build
+```
+
+4. Create `.claude.json` in your project root:
 ```json
 {
   "mcp": {
     "servers": {
       "odoo-xmlrpc": {
-        "command": "python",
-        "args": ["./server.py", "--project", "your_project", "--environment", "your_env"],
+        "command": "node",
+        "args": ["./dist/index.js", "--project", "your_project", "--environment", "your_env"],
         "env": {
           "ODOO_URL": "https://your-odoo.domain.com",
           "ODOO_DATABASE": "your_database", 
@@ -59,6 +69,13 @@ pip install -e .
     }
   }
 }
+```
+
+### Development
+
+For development, you can run directly with tsx:
+```bash
+npm run dev -- --project your_project --environment your_env
 ```
 
 ## Configuration
@@ -173,17 +190,22 @@ Search and read in one operation.
 ## Development
 
 ### Requirements
-- Python 3.8+
-- MCP framework (`pip install mcp`)
+- Node.js 18+
+- npm or yarn
 
 ### Running Locally
 ```bash
-python server.py --project myproject --environment staging
+npm run dev -- --project myproject --environment staging
+```
+
+### Building
+```bash
+npm run build
 ```
 
 ### Testing Connection
 ```bash
-python _config.py
+npm run dev -- --project idp --environment staging
 ```
 
 ## License
